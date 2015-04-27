@@ -5,3 +5,5 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
+#draggable, #draggable2 { width:125px; height:125px; padding:0.5em; border:1px solid #ddd; background-color:#eee}
+#droppable { width: 250px; height: 250px; padding: 0.5em; float: left; margin: 10px; border:1px solid; background-color:#fff}
