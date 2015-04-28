@@ -7,3 +7,27 @@ body {
 }
 #draggable, #draggable2 { width:125px; height:125px; padding:0.5em; border:1px solid #ddd; background-color:#eee}
 #droppable { width: 250px; height: 250px; padding: 0.5em; float: left; margin: 10px; border:1px solid; background-color:#fff}
+
+.list{
+    margin: 0 auto;
+    width: 920px;
+}
+
+.ul-list {
+    background-color: #F93;
+    list-style: none;
+    margin: 0;
+    min-height: 60px;
+    padding: 10px;
+}
+
+.ul-item {
+    background-color: #FFF;
+    border: 1px solid #000;
+    cursor: move;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 20px 0;
+    text-align: center;
+}
