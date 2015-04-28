@@ -63,16 +63,17 @@
     </div>
 
     <div ng-app="todoApp" id="example">
-        <div ng-controller="TodoListController as todoList" class="list">
-        <h1>Hello {{yourName}} !!! {{todoList.todos1.length}} !!! {{todoList.todos2.length}}</h1>
+        <div ng-controller="controller" class="list">
             <div class="left first">
-                <ul class="ul-list">
-                    <li ng-repeat="todo in todoList.todos1" class="ul-item">{{todo.text}}</li>
+                <ul class="ul-list" ui-sortable="sortableOptions" ng-model="todos1">
+                    {{todos1.length}}
+                    <li ng-repeat="todo1 in todos1" class="ul-item">{{todo1.text}}</li>
                 </ul>
             </div>
             <div class="left">
-                <ul class="ul-list">
-                    <li ng-repeat="todo in todoList.todos2" class="ul-item">{{todo.text}}</li>
+                <ul class="ul-list" ui-sortable="sortableOptions" ng-model="todos2">
+                    {{todos2.length}}
+                    <li ng-repeat="todo2 in todos2" class="ul-item">{{todo2.text}}</li>
                 </ul>
             </div>
         </div>
@@ -83,73 +84,28 @@
 <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+<script src="js/sortable.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
-    angular.module('todoApp', [])
-            .controller('TodoListController', function() {
-                var self = this;
-                self.todos1 = [
+    angular.module('todoApp', ['ui.sortable'])
+            .controller('controller', function($scope) {
+                //var self = this;
+                $scope.todos1 = [
                     {text:'learn angular'},
                     {text:'learn jj'},
                     {text:'learn qq'},
                     {text:'build an angular'}];
-                self.todos2 = [
+                $scope.todos2 = [
                     {text:'learn jquery'},
                     {text:'learn hh'},
                     {text:'learn nn'},
                     {text:'build an jquery'}];
+
+                $scope.sortableOptions = {
+                    placeholder: "placeholder",
+                    connectWith: ".ul-list"
+                };
             });
-
-    $(".ul-item").draggable();
-    $(".ul-list")
-            .droppable({
-                drop: function( event, ui ) {
-                    debugger
-                }
-            })
-            .sortable({
-        connectWith: ".ul-list",
-        placeholder: "placeholder"
-        /*update: function(event, ui) {
-            console.log(ui)
-            console.log(ui.item[0].innerText)
-            debugger
-        }*/
-    });
-</script>
-<script>
-    $(function() {
-        $( "#draggable" ).draggable({ revert: "invalid" });
-        $( "#draggable2" ).draggable({ revert: "invalid" });
-
-        $( "#droppable" ).droppable({
-            accept: "#draggable",
-            //activeClass: "ui-state-default",
-            //hoverClass: "ui-state-hover",
-            drop: function( event, ui ) {
-                var o = ui.draggable[0].revert;
-                //$( "#draggable2" ).draggable({ revert: "valid" });
-                $( this )
-                        .addClass( "ui-state-highlight" )
-                        .find( "p" )
-                        .html( "Dropped!" );
-            }
-        });
-    });
-</script>
-<script type="text/javascript">
-
-    $(document).ready(function(){
-
-        // Example 1.3: Sortable and connectable lists with visual helper
-        $('#example-1-3 .sortable-list').sortable({
-            connectWith: '#example-1-3 .sortable-list',
-            placeholder: 'placeholder'
-        });
-
-
-    });
-
 </script>
 
 </body>
